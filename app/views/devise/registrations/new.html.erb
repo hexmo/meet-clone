@@ -1,0 +1,53 @@
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+  <div class="col col-12 col-md-6 col-lg-3">
+    <div class="card p-4">
+      <div class="card-body">
+        <div class="text-center">
+          <%= image_tag '/img/google_meet_horizontal.png', height: '28' %>
+          <h4 class="fw-normal my-3 mb-2">Sign up</h4>
+          <p>Use your email account</p>
+        </div>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
+          <% if resource.errors.any? %>
+            <div class="alert alert-danger small p-1" role="alert">
+              <%= render "devise/shared/error_messages", resource: resource %>
+            </div>
+          <% end %>
+
+          <div class="mb-3">
+            <%= f.label :email, class: 'form-label' %>
+            <%= f.email_field :email,
+              autofocus: true,
+              autocomplete: "email",
+              class: 'form-control'
+            %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :password, class: 'form-label' %>
+            <%= f.password_field :password,
+              autocomplete: "new-password",
+              class: 'form-control'
+            %>
+            <p class="small mt-1 text-muted">Min 6 characters</p>
+          </div>
+
+          <div class="mb-4">
+            <%= f.label :password_confirmation, class: 'form-label' %>
+            <%= f.password_field :password_confirmation,
+              autocomplete: "new-password",
+              class: 'form-control'
+            %>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <%= link_to 'Sign in', new_user_session_path %>
+            <%= f.submit "Sign up", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
